@@ -5,23 +5,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.evan.posto.domain.posts.PostRepository;
 import com.evan.posto.dto.posts.PostSaveRequest;
+import com.evan.posto.service.PostService;
 import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
 public class WebRestController {
 
-    private PostRepository postRepository;
+    private PostService postService;
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public String hello() {
         return "HelloWorld";
     }
 
     @PostMapping("/posts")
-    public void save(@RequestBody PostSaveRequest postSaveRequest) {
-        postRepository.save(postSaveRequest.toEntity());
+    public void save(@RequestBody final PostSaveRequest postSaveRequest) {
+        postService.save(postSaveRequest);
     }
 }
