@@ -15,7 +15,7 @@ public class WebRestController {
 
     private PostService postService;
 
-    @GetMapping("hello")
+    @GetMapping("/hello")
     public String hello() {
         return "HelloWorld";
     }
